@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-{{hi}}
+<h1>Bce кандидаты</h1>
 {% for item in items %}
-<p>{{ item }}</p>
+<p><a href="/candidate/{{item['name']}}"> {{item['name']}}</a></p>
 {% endfor %}
 </body>
 </html>

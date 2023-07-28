@@ -1,6 +1,9 @@
 import json
-from config import PATH
-from  pprint import pprint
+
+DEBUG = False
+if DEBUG:
+    from config import PATH
+    from pprint import pprint
 
 
 def load_candidates_from_json(path):
@@ -8,7 +11,7 @@ def load_candidates_from_json(path):
         return json.load(fp)
 
 
-def get_candidate(all_candidate, candidate_id):
+def get_candidate_by_id(all_candidate, candidate_id):
     """    - возвращает одного кандидата по его id"""
     for uid in all_candidate:
         if int(uid["id"]) == int(candidate_id):
@@ -31,5 +34,6 @@ def get_candidates_by_skill(all_candidate, skill_name):
     return filtred_candidate
 
 
-# print(get_candidate(load_candidates_from_json(PATH),2))
-# pprint(get_candidates_by_skill(load_candidates_from_json(PATH), "go"))
+if DEBUG:
+    pprint(get_candidate_by_id(load_candidates_from_json(PATH), 2))
+    pprint(get_candidates_by_skill(load_candidates_from_json(PATH), "go"))

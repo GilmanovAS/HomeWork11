@@ -1,20 +1,14 @@
 from flask import Flask, request, render_template
+from config import PATH
 
+def run_app():
+    app = Flask(__name__)
 
+    @app.route("/")
+    def page_index():
+        return render_template("index.html", hi="Go", items=["refer", "ferfer", "refre"])
 
-# This is a sample Python script.
+    app.run()
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+        run_app()

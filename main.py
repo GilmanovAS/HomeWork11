@@ -12,10 +12,14 @@ def run_app():
     def page_index():
         return render_template("index.html", items=data_json)
 
-    @app.route("/candidate/<user_name>")
-    def page_candidate(user_name):
+    @app.route("/candidate/<candidate>")
+    def page_candidate(candidate):
+        return render_template("single.html", candidate=get_candidates_by_name(data_json, candidate))
 
-        return render_template("single.html", u_name = get_candidates_by_name(user_name) )
+    @app.route("/skill/<skill_name>")
+    def page_skill(skill_name):
+        return render_template("skill.html", skill_name=skill_name,
+                               candidates=get_candidates_by_skill(data_json, skill_name))
 
     app.run()
 
